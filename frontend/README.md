@@ -151,8 +151,8 @@ const projects = await projectsAPI.getAll()
 import { contactAPI } from '@/utils/api'
 
 await contactAPI.submit({
-  name: 'John Doe',
-  email: 'john@example.com',
+  name: 'Ruhi',
+  email: 'jagritikushwaha95@gmail.com',
   subject: 'Hello',
   message: 'Message content'
 })

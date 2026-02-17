@@ -42,10 +42,10 @@ const Contact = () => {
   }
 
   const socialLinks = [
-    { icon: '🐙', label: 'GitHub', url: 'https://github.com' },
-    { icon: '💼', label: 'LinkedIn', url: 'https://linkedin.com' },
+    { icon: '🐙', label: 'GitHub', url: 'https://github.com/Jagriti-coder-786' },
+    { icon: '💼', label: 'LinkedIn', url: 'https://www.linkedin.com/in/jagriti-kushwaha-a221143b0' },
     { icon: '🐦', label: 'Twitter', url: 'https://twitter.com' },
-    { icon: '✉️', label: 'Email', url: 'mailto:hello@example.com' },
+    { icon: '✉️', label: 'Email', url: 'mailto:jagritikushwaha95@gmail.com' },
     { icon: '🎨', label: 'Dribbble', url: 'https://dribbble.com' },
     { icon: '📸', label: 'Instagram', url: 'https://instagram.com' },
   ]
@@ -87,7 +87,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 rounded-lg glass border-cyan-600/30 dark:border-cyan-400/30 focus:border-cyan-300/50 text-gray-900 dark:text-white placeholder-cyan-700/50 dark:placeholder-cyan-400/30 focus:outline-none transition-colors bg-transparent"
-                  placeholder="John Doe"
+                  placeholder="Ruhi"
                 />
               </motion.div>
 
@@ -106,7 +106,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 rounded-lg glass border-cyan-600/30 dark:border-cyan-400/30 focus:border-cyan-300/50 text-gray-900 dark:text-white placeholder-cyan-700/50 dark:placeholder-cyan-400/30 focus:outline-none transition-colors bg-transparent"
-                  placeholder="john@example.com"
+                  placeholder="jagritikushwaha95@gmail.com"
                 />
               </motion.div>
 
@@ -189,7 +189,7 @@ const Contact = () => {
               </h3>
               <div className="space-y-4">
                 <motion.a
-                  href="https://wa.me/1234567890"
+                  href="https://wa.me/9608967446"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ x: 10 }}
@@ -203,14 +203,14 @@ const Contact = () => {
                 </motion.a>
 
                 <motion.a
-                  href="mailto:hello@example.com"
+                  href="mailto:jagritikushwaha95@gmail.com"
                   whileHover={{ x: 10 }}
                   className="flex items-center gap-4 p-4 glass rounded-lg border-purple-600/30 dark:border-purple-400/30 hover:border-purple-300/50 transition-smooth hover:shadow-lg"
                 >
                   <span className="text-3xl">📧</span>
                   <div>
                     <div className="font-semibold text-purple-700 dark:text-purple-300">Email Me</div>
-                    <div className="text-purple-700/60 dark:text-purple-300/60 text-sm">hello@example.com</div>
+                    <div className="text-purple-700/60 dark:text-purple-300/60 text-sm">jagritikushwaha95@gmail.com</div>
                   </div>
                 </motion.a>
 
@@ -221,7 +221,7 @@ const Contact = () => {
                   <span className="text-3xl">📞</span>
                   <div>
                     <div className="font-semibold text-pink-700 dark:text-pink-300">Call Me</div>
-                    <div className="text-pink-700/60 dark:text-pink-300/60 text-sm">+1 (555) 123-4567</div>
+                    <div className="text-pink-700/60 dark:text-pink-300/60 text-sm">+91 9608967446</div>
                   </div>
                 </motion.button>
               </div>

@@ -9,7 +9,7 @@ const Skills = () => {
   const skillCategories = [
     {
       category: 'Frontend',
-      skills: ['React', 'Next.js', 'Tailwind CSS', 'Framer Motion', 'GSAP', 'Three.js'],
+      skills: ['React', 'HTML5', 'Tailwind CSS', 'Framer Motion', 'GSAP', 'Three.js'],
       icon: '🎨',
     },
     {
@@ -19,12 +19,12 @@ const Skills = () => {
     },
     {
       category: 'Design',
-      skills: ['UI/UX Design', 'Figma', 'Prototyping', 'Motion Design', 'Branding', 'Web Animation'],
+      skills: ['UI/UX Design', 'Figma', 'Motion Design', 'Branding', 'Web Animation'],
       icon: '✨',
     },
     {
       category: 'Tools',
-      skills: ['Git', 'VS Code', 'Docker', 'Webpack', 'Vite', 'Firebase'],
+      skills: ['Git', 'VS Code', 'AI Tools', 'Github', 'Vite', 'Firebase'],
       icon: '🛠️',
     },
   ]
@@ -103,8 +103,8 @@ const Skills = () => {
           className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16"
         >
           {[
-            { label: 'Projects Completed', value: '50+' },
-            { label: 'Years Experience', value: '6+' },
+            { label: 'Projects Completed', value: '20+' },
+            { label: 'Years Experience', value: '1+' },
             { label: 'Happy Clients', value: '100+' },
             { label: 'Avg Rating', value: '4.9★' },
           ].map((stat) => (

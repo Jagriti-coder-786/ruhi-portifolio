@@ -8,25 +8,25 @@ const Education = () => {
 
   const educationData = [
     {
-      degree: 'M.Tech in Advanced Computing',
-      institution: 'Delhi University',
-      year: '2020 - 2022',
-      description: 'Specialized in Cloud Computing and AI/ML technologies',
+      degree: 'Bachelor of Computer Application (BCA) - Cyber Security',
+      institution: 'ICFAI University, Ranchi',
+      year: '2024 - 2027',
+      description: 'Currently pursuing BCA with specialization in Cyber Security. Focused on Networking, Web Security, Ethical Hacking, Database Management, and Full Stack Development.',
       icon: '🎓',
     },
     {
-      degree: 'B.Tech in Computer Science',
-      institution: 'Mumbai Institute of Technology',
-      year: '2016 - 2020',
-      description: 'CGPA: 8.5/10 | Major in Web Development and Cybersecurity',
+      degree: 'Intermediate',
+      institution: 'Surat Pandey Inter College, Garhwa',
+      year: '2020 - 2022',
+      description: 'Completed Higher Secondary education with academic foundation in Computer Science and core subjects.',
       icon: '📚',
     },
     {
-      degree: 'Advanced Full Stack Development',
-      institution: 'Industry Certifications',
-      year: '2022 - 2023',
-      description: 'AWS Certified | Google Cloud Certified | MERN Stack Specialist',
-      icon: '🏆',
+      degree: 'Matriculation',
+      institution: 'MDNGG Public School, Garhwa',
+      year: '2019 - 2020',
+      description: 'Completed secondary education with strong academic fundamentals.',
+      icon: '📗',
     },
   ]
 
