@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
 import { useStore } from '../store/store'
-import clsx from 'clsx'
 
 const ThemeToggle = () => {
   const { theme, toggleTheme } = useStore()

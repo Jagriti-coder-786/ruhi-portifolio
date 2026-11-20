@@ -1,8 +1,8 @@
 # Frontend README
 
-## 🚀 Futuristic Cyberpunk Portfolio Frontend
+## 🚀 Jagriti Kushwaha Portfolio
 
-Modern React + Vite frontend for a world-class developer portfolio.
+Modern React + Vite portfolio with navbar-driven views, responsive layouts, animated project case studies, a hosted resume, live project links, and a premium under-development experience.
 
 ## Features
 
@@ -14,7 +14,10 @@ Modern React + Vite frontend for a world-class developer portfolio.
 - 📱 **Mobile-First** - Fully responsive design
 - 🎯 **Zustand** - Lightweight state management
 - 🔄 **Axios** - HTTP client for API calls
-- 🌊 **Lenis** - Smooth scrolling
+- 🧭 **Single-Screen Navigation** - Section switches without continuous page scrolling
+- 📚 **Project Case Studies** - Challenge, approach, outcome, capabilities, and technology details
+- 📄 **Resume PDF** - Publicly hosted resume within the app
+- ⚡ **Performance Optimized** - Lazy-loaded sections and touch-friendly rendering
 
 ## Quick Start
 
@@ -151,8 +154,8 @@ const projects = await projectsAPI.getAll()
 import { contactAPI } from '@/utils/api'
 
 await contactAPI.submit({
-  name: 'Ruhi',
-  email: 'jagritikushwaha95@gmail.com',
+  name: 'John Doe',
+  email: 'john@example.com',
   subject: 'Hello',
   message: 'Message content'
 })

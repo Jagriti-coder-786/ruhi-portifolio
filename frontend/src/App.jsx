@@ -1,45 +1,19 @@
-import { useEffect, useRef } from 'react'
+import { Suspense, lazy, useEffect } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
 import { useStore } from './store/store'
-import Lenis from 'lenis'
 import Hero from './sections/Hero'
 import Navigation from './components/Navigation'
-import Skills from './sections/Skills'
-import Education from './sections/Education'
-import Experience from './sections/Experience'
-import Projects from './sections/Projects'
-import Contact from './sections/Contact'
-import FloatingDock from './components/FloatingDock'
-import ThemeToggle from './components/ThemeToggle'
+const Skills = lazy(() => import('./sections/Skills'))
+const Education = lazy(() => import('./sections/Education'))
+const Experience = lazy(() => import('./sections/Experience'))
+const Projects = lazy(() => import('./sections/Projects'))
+const Contact = lazy(() => import('./sections/Contact'))
+const About = lazy(() => import('./sections/About'))
+const CaseStudy = lazy(() => import('./sections/CaseStudy'))
+import PremiumCursor from './components/PremiumCursor'
 
 function App() {
-  const lenisRef = useRef(null)
-  const { theme } = useStore()
-
-  useEffect(() => {
-    // Initialize Lenis smooth scroll
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      direction: 'vertical',
-      gestureDirection: 'vertical',
-      smooth: true,
-      mouseMultiplier: 1,
-      smoothTouch: false,
-    })
-
-    lenisRef.current = lenis
-
-    function raf(time) {
-      lenis.raf(time)
-      requestAnimationFrame(raf)
-    }
-
-    requestAnimationFrame(raf)
-
-    return () => {
-      lenis.destroy()
-    }
-  }, [])
+  const { theme, activeSection } = useStore()
 
   useEffect(() => {
     // Apply theme to HTML element
@@ -53,19 +27,29 @@ function App() {
     }
   }, [theme])
 
+  const sections = { hero: <Hero />, about: <About />, skills: <Skills />, education: <Education />, experience: <Experience />, projects: <Projects />, contact: <Contact />, caseStudy: <CaseStudy /> }
+
   return (
-    <div className="min-h-screen transition-colors duration-300">
+    <div className="h-[100svh] overflow-hidden transition-colors duration-300">
+      <PremiumCursor />
+      <div className="premium-noise" />
       <Navigation />
-      <FloatingDock />
-      <ThemeToggle />
-      
-      <main className="relative">
-        <Hero />
-        <Skills />
-        <Education />
-        <Experience />
-        <Projects />
-        <Contact />
+
+      <main className="h-[100svh] pt-[76px]">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeSection}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+            className="h-full overflow-hidden"
+          >
+            <Suspense fallback={<div className="h-full" />}>
+              {sections[activeSection]}
+            </Suspense>
+          </motion.div>
+        </AnimatePresence>
       </main>
     </div>
   )

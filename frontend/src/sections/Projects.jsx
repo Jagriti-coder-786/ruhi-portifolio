@@ -1,149 +1,47 @@
-import { useState, useRef } from 'react'
+﻿import { useState, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import SectionTitle from '../components/SectionTitle'
-import ProjectModal from '../components/ProjectModal'
+import { useStore } from '../store/store'
+import DevelopmentOverlay from '../components/DevelopmentOverlay'
 import { projects } from '../data/projects'
 
 const Projects = () => {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: false, margin: '-100px' })
-  const [selectedProject, setSelectedProject] = useState(null)
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  }
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6 },
-    },
-  }
+  const visible = useInView(ref, { once: true, margin: '-100px' })
+  const openCaseStudy = useStore((state) => state.openCaseStudy)
+  const [developmentProject, setDevelopmentProject] = useState(null)
 
   return (
-    <section
-      id="projects"
-      ref={ref}
-      className="relative py-20 lg:py-32 px-6 lg:px-12 overflow-hidden"
-    >
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-transparent to-pink-500/5" />
+    <section id="projects" ref={ref} className="portfolio-section h-full overflow-y-auto px-5 py-5 sm:px-8 lg:px-12">
+      <div className="mx-auto max-w-[1480px]">
+        <div className="mb-8 flex items-end justify-between border-b border-[var(--line)] pb-5">
+          <div><p className="section-kicker mb-7">Selected work</p><h2 className="display-font text-[clamp(3.2rem,8vw,7.5rem)] font-black leading-[.88]">Case studies<span className="text-[var(--lime)]">.</span></h2></div>
+          <span className="hidden text-xs font-bold uppercase tracking-[.16em] text-[var(--ink)] opacity-80 md:block">2026</span>
+        </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto">
-        <SectionTitle subtitle="Showcase of premium web applications built with cutting-edge technology">
-          Featured Projects
-        </SectionTitle>
-
-        {/* Projects Grid */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
-          {projects.map((project) => (
-            <motion.div
-              key={project.id}
-              variants={itemVariants}
-              whileHover={{ y: -15 }}
-              onClick={() => setSelectedProject(project)}
-              className="group glass rounded-2xl overflow-hidden border-cyan-600/20 dark:border-cyan-400/20 hover:border-cyan-400/50 transition-smooth cursor-pointer h-full flex flex-col"
-            >
-              {/* Project thumbnail */}
-              <div className="relative h-40 bg-gradient-to-br from-cyan-500/20 to-purple-500/20 flex items-center justify-center overflow-hidden group-hover:shadow-neon-cyan transition-smooth">
-                <motion.div
-                  className="text-6xl"
-                  whileHover={{ scale: 1.2, rotate: 5 }}
-                >
-                  {project.thumbnail}
-                </motion.div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+        <div className="grid gap-5 md:grid-cols-2">
+          {projects.slice(0, 4).map((project, index) => (
+            <motion.article key={project.id} initial={{ opacity: 0, y: 40 }} animate={visible ? { opacity: 1, y: 0 } : {}} transition={{ delay: index * .08, duration: .7 }} className="group hover-lift border border-[var(--line)] bg-[var(--paper)] p-3 rounded-[1.5rem] hover:border-[var(--violet)]">
+              <div className="relative isolate flex aspect-[16/7] items-center justify-center overflow-hidden rounded-[1rem] bg-[#11120f] [filter:none]">
+                <div className="absolute inset-0 opacity-20 editorial-grid" />
+                <span className="relative block font-mono text-[clamp(1.8rem,4vw,3.5rem)] font-black tracking-[.08em] text-[#c8ff3d] [filter:none] [text-rendering:geometricPrecision] transition-transform duration-500 group-hover:scale-[1.03]">{project.thumbnail}</span>
+                <span className="absolute right-5 top-5 rounded-full bg-[var(--lime)] px-3 py-2 text-[10px] font-bold uppercase tracking-[.12em] text-black">{project.category}</span>
               </div>
-
-              {/* Project info */}
-              <div className="p-6 flex flex-col flex-1">
-                <h3 className="text-xl font-bold text-cyan-900 dark:text-cyan-300 mb-2">
-                  {project.title}
-                </h3>
-                <p className="text-cyan-700/60 dark:text-cyan-300/60 text-sm mb-4 flex-1">
-                  {project.description}
-                </p>
-
-                {/* Tech stack tags */}
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.techStack.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-2 py-1 rounded text-xs font-mono bg-cyan-500/10 border border-cyan-600/30 dark:border-cyan-400/30 text-cyan-700/70 dark:text-cyan-300/70"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Stats */}
-                <div className="flex items-center justify-between text-sm text-cyan-700/60 dark:text-cyan-300/60 mb-4 pt-4 border-t border-cyan-600/10 dark:border-cyan-400/10">
-                  <span>⭐ {project.rating}/5</span>
-                  <span>👁️ {project.views.toLocaleString()} views</span>
-                </div>
-
-                {/* Action buttons */}
-                <div className="flex gap-3">
-                  <motion.a
-                    href={project.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={(e) => e.stopPropagation()}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex-1 px-4 py-2 rounded-lg bg-cyan-500/10 border border-cyan-600/30 dark:border-cyan-400/30 text-cyan-800 dark:text-cyan-300 text-sm font-semibold hover:border-cyan-300/50 transition-smooth"
-                  >
-                    Live Demo
-                  </motion.a>
-                  <motion.button
-                    onClick={(e) => {
-                      e.stopPropagation()
-                      setSelectedProject(project)
-                    }}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex-1 px-4 py-2 rounded-lg bg-pink-500/10 border border-pink-600/30 dark:border-pink-400/30 text-pink-800 dark:text-pink-300 text-sm font-semibold hover:border-pink-300/50 transition-smooth"
-                  >
-                    {project.price}
-                  </motion.button>
-                </div>
+              <div className="px-3 pb-4 pt-6">
+                <h3 className="mb-4 text-2xl font-bold tracking-tight lg:text-3xl">{project.title}</h3>
+                <p className="mb-5 max-w-md text-sm leading-6 text-[var(--ink)] opacity-85">{project.description}</p>
+                <button onClick={(event) => { event.stopPropagation(); openCaseStudy(project.id) }} className="mb-4 flex items-center gap-3 text-xs font-bold text-[var(--violet)] transition-transform hover:translate-x-1"><span className="border-b border-[var(--violet)] pb-1">Open full case study</span><span className="text-base">↗</span></button>
+                <div className="mb-4 flex flex-wrap gap-2">{project.techStack.slice(0, 3).map((tech) => <span key={tech} className="pill px-3 py-1.5 text-[10px] font-bold uppercase tracking-[.08em]">{tech}</span>)}</div>
+                {project.liveStatus === 'live' ? (
+                  <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" onClick={(event) => event.stopPropagation()} className="inline-flex items-center gap-2 rounded-full bg-[var(--lime)] px-4 py-2.5 text-xs font-bold text-black shadow-[0_8px_24px_rgba(200,255,61,.12)] transition-transform hover:-translate-y-0.5"><span>View live project</span><span>↗</span></a>
+                ) : (
+                  <button onClick={(event) => { event.stopPropagation(); setDevelopmentProject(project) }} className="inline-flex items-center gap-2 rounded-full bg-[var(--lime)] px-4 py-2.5 text-xs font-bold text-black shadow-[0_8px_24px_rgba(200,255,61,.12)] transition-transform hover:-translate-y-0.5"><span>Live preview</span><span>↗</span></button>
+                )}
               </div>
-            </motion.div>
+            </motion.article>
           ))}
-        </motion.div>
-
-        {/* View all projects button */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ delay: 0.5 }}
-          className="mt-16 text-center"
-        >
-          <motion.button
-            whileHover={{ scale: 1.05, boxShadow: '0 0 40px rgba(0, 245, 255, 0.3)' }}
-            whileTap={{ scale: 0.95 }}
-            className="glass px-10 py-4 rounded-xl font-semibold text-cyan-800 dark:text-cyan-300 border-cyan-600/30 dark:border-cyan-400/30 hover:border-cyan-300/50 transition-smooth neon-border"
-          >
-            View All {projects.length} Projects
-          </motion.button>
-        </motion.div>
+        </div>
       </div>
-
-      {/* Project Modal */}
-      <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
+      <DevelopmentOverlay project={developmentProject} open={Boolean(developmentProject)} onBack={() => setDevelopmentProject(null)} onClose={() => setDevelopmentProject(null)} />
     </section>
   )
 }

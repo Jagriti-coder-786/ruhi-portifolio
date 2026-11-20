@@ -1,28 +1,26 @@
-# 🚀 Futuristic Cyberpunk Portfolio
+# Jagriti Kushwaha — Portfolio
 
-A world-class, premium interactive portfolio website built with **React**, **Vite**, and **Tailwind CSS**. This project features a cinematic cyberpunk aesthetic with 60fps animations, 3D elements, and a glassmorphism design system. It is designed to showcase the work of **Jagriti Kushwaha**, a Full Stack Developer, in a stunning, high-performance interface.
+A premium, navbar-driven portfolio for **Jagriti Kushwaha**, a full-stack developer and BCA Cybersecurity student. The experience uses an editorial visual system, smooth motion, responsive layouts, and a complete project case-study flow.
 
 ## ✨ Features
 
-- 🎬 **Cinematic Hero Section** - Animated intro with typing effects, floating particles, and 3D depth.
-- 🎨 **Glassmorphism Design** - Modern, premium UI with neon glow effects and backdrop blurs.
-- 📱 **Mobile-First Responsive** - Seamlessly adapts to all device sizes (Mobile, Tablet, Desktop).
-- 🌗 **Dark & Light Mode** - Beautiful theme switching with smooth color transitions.
-- ⚡ **High Performance** - Built on Vite for instant loading and 60fps animations.
-- 🎯 **Interactive Components** - 3D skills visualization, animated timeline, and holographic experience cards.
-- 💼 **Easy Project Management** - Add or edit projects via a simple JSON configuration file.
-- 📧 **Client-Side Contact Form** - Features a simulated/mock contact form for demonstration purposes.
-- 🌐 **SEO Optimized** - Structured architecture with semantic HTML and meta tags.
+- 🎬 **Single-Screen Navigation** — Navbar-driven sections with fluid transitions and no continuous page scroll.
+- 📱 **Every-Device Responsive** — Dedicated layouts for desktop, tablet, and mobile navigation.
+- 🌗 **Dark & Light Themes** — Theme-safe editorial colors and polished theme switching.
+- 💼 **Project Case Studies** — Detailed challenge, approach, outcome, capabilities, and technology sections.
+- ☁️ **Live Project Access** — Cloud File Storage opens at [cloud-fss.vercel.app](https://cloud-fss.vercel.app).
+- 🚧 **Animated Development Screens** — Premium under-development experiences for projects still being refined.
+- 📄 **Resume Viewer** — Public PDF resume available throughout the portfolio.
+- ⚡ **Optimized Rendering** — Lazy-loaded sections, lightweight cursor behavior, GPU-friendly motion, and reduced-motion support.
+- 📧 **Contact Section** — Direct email, GitHub, and LinkedIn actions.
 
 ## 🛠️ Tech Stack
 
 - **Frontend**: React 18, Vite
 - **Styling**: Tailwind CSS, PostCSS
 - **Animations**: GSAP, Framer Motion
-- **3D Graphics**: Three.js, React Three Fiber
 - **State Management**: Zustand
-- **Scrolling**: Lenis (Smooth Scroll)
-- **Icons**: Lucide React / FontAwesome
+- **Data & Rendering**: Resume-derived portfolio content and lazy-loaded React sections
 
 ## 💻 Installation Steps
 
@@ -70,7 +68,7 @@ You can easily customize the content:
 -   **Projects**: Edit `src/data/projects.js` to update project titles, descriptions, and images.
 -   **UI Text**: Modify text mainly in `src/sections/` (e.g., `Hero.jsx`, `Skills.jsx`).
 -   **Colors**: Change the color theme in `tailwind.config.js`.
--   **Resume**: Replace `public/resume.pdf` with your own resume file.
+-   **Resume**: Replace `frontend/public/Jagriti-Kushwaha-Resume.pdf` with an updated PDF.
 
 ## 📂 Folder Structure Overview
 
@@ -94,3 +92,6 @@ frontend/
 If you have any questions or would like to collaborate:
 
 - **Developer**: Jagriti Kushwaha
+- **Email**: [jagritikushwaha95@gmail.com](mailto:jagritikushwaha95@gmail.com)
+- **GitHub**: [Jagriti-coder-786](https://github.com/Jagriti-coder-786)
+- **LinkedIn**: [Jagriti Kushwaha](https://www.linkedin.com/in/jagriti-kushwaha-a221143b0/)

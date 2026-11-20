@@ -9,10 +9,33 @@
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+img, svg, canvas, video {
+  display: block;
+  max-width: 100%;
+}
+
+button, a, input, textarea {
+  touch-action: manipulation;
+}
+
+.portfolio-section,
+.cursor-dot,
+.cursor-ring,
+[data-framer-motion] {
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 html {
   scroll-behavior: smooth;
+  overflow: hidden;
 }
 
 body {
@@ -321,3 +344,92 @@ html.light .glass:hover {
 .no-transition {
   transition: none !important;
 }
+
+/* ============================================ */
+/* PREMIUM PORTFOLIO SYSTEM */
+/* ============================================ */
+
+:root {
+  --ink: #10110f;
+  --paper: #f2f0ea;
+  --lime: #c8ff3d;
+  --violet: #7467f0;
+  --line: rgba(16, 17, 15, 0.12);
+}
+
+html.dark {
+  --ink: #f2f0ea;
+  --paper: #10110f;
+  --lime: #d0ff53;
+  --violet: #978cff;
+  --line: rgba(242, 240, 234, 0.12);
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Manrope', 'Inter', system-ui, sans-serif;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+html.light body {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.premium-noise {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+}
+
+.display-font { font-family: 'Manrope', 'Inter', sans-serif; letter-spacing: -0.065em; }
+.editorial-grid { background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: 80px 80px; }
+.pill { border: 1px solid var(--line); border-radius: 999px; }
+.outline-text { color: transparent; -webkit-text-stroke: 1px var(--ink); }
+
+.section-kicker { display: flex; align-items: center; gap: 12px; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; }
+.section-kicker::before { content: ''; width: 34px; height: 1px; background: var(--ink); opacity: 0.6; }
+
+.hover-lift { transition: transform 0.45s cubic-bezier(.2,.8,.2,1), border-color 0.45s ease, background 0.45s ease; }
+.hover-lift:hover { transform: translateY(-8px); }
+
+.marquee-track { width: max-content; animation: marquee 24s linear infinite; }
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+.cursor-dot { position: fixed; width: 8px; height: 8px; border-radius: 50%; background: var(--lime); z-index: 9999; pointer-events: none; mix-blend-mode: difference; }
+.cursor-ring { position: fixed; width: 36px; height: 36px; border: 1px solid var(--ink); border-radius: 50%; z-index: 9998; pointer-events: none; transition: width .2s, height .2s, border-color .2s; }
+
+@media (pointer: coarse) { .cursor-dot, .cursor-ring { display: none; } }
+
+@media (max-width: 1023px) {
+  .premium-noise { display: none; }
+  .editorial-grid { background-size: 48px 48px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor-dot, .cursor-ring { display: none; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.portfolio-section a,
+.portfolio-section button,
+.portfolio-section [role='button'] {
+  contain: layout paint;
+}
+
+.portfolio-section { scrollbar-width: none; -ms-overflow-style: none; }
+.portfolio-section::-webkit-scrollbar { width: 0; height: 0; display: none; }
+.portfolio-section::-webkit-scrollbar-track { background: transparent; }
+.portfolio-section::-webkit-scrollbar-thumb { background: var(--lime); border-radius: 999px; }
+body { overflow: hidden; }
+
+html, body, #root { overscroll-behavior: none; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; } }
