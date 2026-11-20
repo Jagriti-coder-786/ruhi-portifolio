@@ -1,14 +1,13 @@
-﻿import { useState, useRef } from 'react'
+import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { useStore } from '../store/store'
-import DevelopmentOverlay from '../components/DevelopmentOverlay'
 import { projects } from '../data/projects'
 
 const Projects = () => {
   const ref = useRef(null)
   const visible = useInView(ref, { once: true, margin: '-100px' })
   const openCaseStudy = useStore((state) => state.openCaseStudy)
-  const [developmentProject, setDevelopmentProject] = useState(null)
+  const openDevelopmentProject = useStore((state) => state.openDevelopmentProject)
 
   return (
     <section id="projects" ref={ref} className="portfolio-section h-full overflow-y-auto px-5 py-5 sm:px-8 lg:px-12">
@@ -20,7 +19,7 @@ const Projects = () => {
 
         <div className="grid gap-5 md:grid-cols-2">
           {projects.slice(0, 4).map((project, index) => (
-            <motion.article key={project.id} initial={{ opacity: 0, y: 40 }} animate={visible ? { opacity: 1, y: 0 } : {}} transition={{ delay: index * .08, duration: .7 }} className="group hover-lift border border-[var(--line)] bg-[var(--paper)] p-3 rounded-[1.5rem] hover:border-[var(--violet)]">
+            <motion.article key={project.id} initial={{ opacity: 0, y: 40, scale: .97 }} animate={visible ? { opacity: 1, y: 0, scale: 1 } : {}} transition={{ delay: index * .1, duration: .65, ease: [0.22,1,0.36,1] }} className="group hover-lift border border-[var(--line)] bg-[var(--paper)] p-3 rounded-[1.5rem] hover:border-[var(--violet)]">
               <div className="relative isolate flex aspect-[16/7] items-center justify-center overflow-hidden rounded-[1rem] bg-[#11120f] [filter:none]">
                 <div className="absolute inset-0 opacity-20 editorial-grid" />
                 <span className="relative block font-mono text-[clamp(1.8rem,4vw,3.5rem)] font-black tracking-[.08em] text-[#c8ff3d] [filter:none] [text-rendering:geometricPrecision] transition-transform duration-500 group-hover:scale-[1.03]">{project.thumbnail}</span>
@@ -34,14 +33,13 @@ const Projects = () => {
                 {project.liveStatus === 'live' ? (
                   <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" onClick={(event) => event.stopPropagation()} className="inline-flex items-center gap-2 rounded-full bg-[var(--lime)] px-4 py-2.5 text-xs font-bold text-black shadow-[0_8px_24px_rgba(200,255,61,.12)] transition-transform hover:-translate-y-0.5"><span>View live project</span><span>↗</span></a>
                 ) : (
-                  <button onClick={(event) => { event.stopPropagation(); setDevelopmentProject(project) }} className="inline-flex items-center gap-2 rounded-full bg-[var(--lime)] px-4 py-2.5 text-xs font-bold text-black shadow-[0_8px_24px_rgba(200,255,61,.12)] transition-transform hover:-translate-y-0.5"><span>Live preview</span><span>↗</span></button>
+                  <button onClick={(event) => { event.stopPropagation(); openDevelopmentProject(project.id) }} className="inline-flex items-center gap-2 rounded-full bg-[var(--lime)] px-4 py-2.5 text-xs font-bold text-black shadow-[0_8px_24px_rgba(200,255,61,.12)] transition-transform hover:-translate-y-0.5"><span>Live preview</span><span>↗</span></button>
                 )}
               </div>
             </motion.article>
           ))}
         </div>
       </div>
-      <DevelopmentOverlay project={developmentProject} open={Boolean(developmentProject)} onBack={() => setDevelopmentProject(null)} onClose={() => setDevelopmentProject(null)} />
     </section>
   )
 }

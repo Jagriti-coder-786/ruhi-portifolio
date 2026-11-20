@@ -15,7 +15,7 @@ const Experience = () => {
         <h2 className="display-font mb-16 text-[clamp(3.2rem,7vw,7rem)] font-black leading-[.9]">Selected path.</h2>
         <div className="border-t border-[var(--line)]">
           {items.map(([period, role, company, description], index) => (
-            <motion.article key={role} initial={{ opacity: 0, y: 30 }} animate={visible ? { opacity: 1, y: 0 } : {}} transition={{ delay: index * .1 }} className="hover-lift grid gap-5 border-b border-[var(--line)] py-9 md:grid-cols-[180px_1fr_1fr] md:items-start lg:py-12">
+            <motion.article key={role} initial={{ opacity: 0, y: 30, x: -12 }} animate={visible ? { opacity: 1, y: 0, x: 0 } : {}} transition={{ delay: index * .1, duration: .55 }} className="hover-lift grid gap-5 border-b border-[var(--line)] py-9 md:grid-cols-[180px_1fr_1fr] md:items-start lg:py-12">
               <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-[var(--ink)] opacity-70">{period}</span>
               <div><h3 className="text-2xl font-bold tracking-tight lg:text-4xl">{role}</h3><p className="mt-2 text-sm font-bold text-[var(--violet)]">{company}</p></div>
               <p className="max-w-md text-sm leading-7 text-[var(--ink)] opacity-90 lg:justify-self-end">{description}</p>

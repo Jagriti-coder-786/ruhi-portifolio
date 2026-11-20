@@ -14,7 +14,7 @@ const Skills = () => {
   return (
     <section id="skills" ref={ref} className="portfolio-section relative h-full overflow-y-auto px-5 py-8 sm:px-8 lg:px-12">
       <div className="mx-auto max-w-[1480px] pb-10">
-        <motion.div initial={{ opacity: 0, y: 30 }} animate={visible ? { opacity: 1, y: 0 } : {}}>
+        <motion.div initial={{ opacity: 0, y: 30 }} animate={visible ? { opacity: 1, y: 0 } : {}} transition={{ duration: .55 }}>
           <p className="section-kicker mb-4 lg:mb-6">Capabilities</p>
           <h2 className="display-font text-[clamp(2.8rem,7vw,6.5rem)] font-black leading-[.88]">Built for<br /><span className="outline-text">what&apos;s next.</span></h2>
         </motion.div>

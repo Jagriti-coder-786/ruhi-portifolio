@@ -16,7 +16,7 @@ const Navigation = () => {
     setMenuOpen(false)
   }
 
-  if (activeSection === 'caseStudy') return null
+  if (activeSection === 'caseStudy' || activeSection === 'developmentProject') return null
 
   return (
     <header className="fixed left-0 top-0 z-50 w-full px-4 py-3 sm:px-6 lg:px-10">

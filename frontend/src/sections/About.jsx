@@ -4,8 +4,9 @@ const About = () => (
   <section className="portfolio-section h-full overflow-y-auto px-5 py-6 sm:px-8 lg:px-12">
     <div className="mx-auto grid max-w-[1480px] gap-6 pb-8 lg:min-h-[calc(100svh-118px)] lg:grid-cols-[.72fr_1.28fr] lg:items-center lg:gap-10">
       <motion.div
-        initial={{ opacity: 0, x: -30 }}
-        animate={{ opacity: 1, x: 0 }}
+        initial={{ opacity: 0, x: -30, scale: .96 }}
+        animate={{ opacity: 1, x: 0, scale: 1 }}
+        transition={{ duration: .65, ease: [0.22,1,0.36,1] }}
         className="relative mx-auto h-[240px] w-full max-w-[420px] overflow-hidden rounded-[1.5rem] bg-[#11120f] sm:h-[320px] lg:h-[520px] lg:rounded-[2rem]"
       >
         <div className="absolute inset-0 editorial-grid opacity-20" />

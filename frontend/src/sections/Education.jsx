@@ -12,7 +12,7 @@ const Education = () => {
       <div className="mx-auto max-w-[1480px] pb-10">
         <p className="section-kicker mb-6">Education & foundation</p>
 
-        <motion.div initial={{ opacity: 0, y: 24 }} animate={visible ? { opacity: 1, y: 0 } : {}} className="grid gap-6 rounded-[2rem] bg-[#11120f] p-6 text-[#f4f1e8] lg:grid-cols-[.78fr_1.22fr] lg:p-10">
+        <motion.div initial={{ opacity: 0, y: 24, scale: .985 }} animate={visible ? { opacity: 1, y: 0, scale: 1 } : {}} transition={{ duration: .55, ease: [0.22,1,0.36,1] }} className="grid gap-6 rounded-[2rem] bg-[#11120f] p-6 text-[#f4f1e8] lg:grid-cols-[.78fr_1.22fr] lg:p-10">
           <div className="flex flex-col justify-between border-b border-white/12 pb-6 lg:border-b-0 lg:border-r lg:pb-0 lg:pr-10">
             <h2 className="display-font text-[clamp(3.2rem,6vw,6.2rem)] font-black leading-[.86]">Always<br /><span className="text-[var(--lime)]">learning.</span></h2>
             <div className="mt-8 grid grid-cols-2 gap-3">

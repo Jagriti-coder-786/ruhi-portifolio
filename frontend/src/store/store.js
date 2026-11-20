@@ -7,8 +7,15 @@ export const useStore = create(
       theme: 'dark',
       activeSection: 'hero',
       selectedProjectId: null,
+      liveProjectUrl: null,
+      liveProjectTitle: null,
+      developmentProjectId: null,
       setActiveSection: (activeSection) => set({ activeSection }),
       openCaseStudy: (projectId) => set({ activeSection: 'caseStudy', selectedProjectId: projectId }),
+      openDevelopmentProject: (projectId) => set({
+        activeSection: 'developmentProject',
+        developmentProjectId: projectId,
+      }),
       setTheme: (theme) => set({ theme }),
       toggleTheme: () => set((state) => ({ theme: state.theme === 'dark' ? 'light' : 'dark' })),
       

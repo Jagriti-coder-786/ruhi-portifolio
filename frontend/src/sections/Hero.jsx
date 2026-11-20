@@ -9,7 +9,24 @@ const Hero = () => {
   return (
     <section id="hero" ref={ref} className="portfolio-section relative h-full overflow-y-auto pt-4">
       <div className="absolute inset-0 editorial-grid opacity-40" />
-      <motion.div className="relative z-10 mx-auto flex min-h-[82svh] max-w-[1480px] flex-col justify-between px-5 sm:px-8 lg:px-12">
+      <motion.div
+        aria-hidden="true"
+        animate={{ x: [0, 18, 0], y: [0, -10, 0], rotate: [0, 8, 0] }}
+        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+        className="absolute right-[12%] top-[22%] h-28 w-28 rounded-full border border-[var(--violet)]/30 sm:h-40 sm:w-40"
+      />
+      <motion.div
+        aria-hidden="true"
+        animate={{ y: [0, 14, 0], opacity: [.35, .7, .35] }}
+        transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+        className="absolute bottom-[18%] left-[8%] h-16 w-16 rounded-full bg-[var(--lime)]/15 blur-xl"
+      />
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: .55 }}
+        className="relative z-10 mx-auto flex min-h-[82svh] max-w-[1480px] flex-col justify-between px-5 sm:px-8 lg:px-12"
+      >
         <div className="flex items-start justify-between pt-4">
           <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .7 }} className="flex items-center gap-3">
             <span className="h-2 w-2 rounded-full bg-[var(--lime)] shadow-[0_0_18px_var(--lime)]" />

@@ -9,7 +9,7 @@ const Contact = () => {
 
   return (
     <section id="contact" ref={ref} className="portfolio-section h-full overflow-y-auto px-5 py-8 sm:px-8 lg:px-12">
-      <motion.div initial={{ opacity: 0, y: 40 }} animate={visible ? { opacity: 1, y: 0 } : {}} className="mx-auto max-w-[1480px] overflow-hidden rounded-[2rem] bg-[#7467f0] px-6 py-14 text-[#11120f] sm:px-10 lg:px-16 lg:py-20">
+      <motion.div initial={{ opacity: 0, y: 40, scale: .985 }} animate={visible ? { opacity: 1, y: 0, scale: 1 } : {}} transition={{ duration: .55, ease: [0.22,1,0.36,1] }} className="mx-auto max-w-[1480px] overflow-hidden rounded-[2rem] bg-[#7467f0] px-6 py-14 text-[#11120f] sm:px-10 lg:px-16 lg:py-20">
         <div className="grid gap-14 lg:grid-cols-[1fr_.8fr]">
           <div><p className="mb-8 text-[11px] font-bold uppercase tracking-[.18em] text-[#11120f]/80">Start a project</p><h2 className="display-font text-[clamp(4rem,9vw,8.5rem)] font-black leading-[.82]">LET&apos;S MAKE<br /><span className="outline-text text-white">IT REAL.</span></h2></div>
           <form onSubmit={submit} className="self-end space-y-5">
